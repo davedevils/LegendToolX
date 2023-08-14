@@ -28,6 +28,7 @@ public class HolyBeastUnzipper
         { "effecttexture", "effect\\texture" },
         { "itemanimation", "item\\animation" },
         { "itemmodel", "item\\model" },
+        { "itemmodeltexture", "item\\model\\texture" },
         { "itemtexture", "item\\texture" },
         { "mapanimation", "map\\animation" },
         { "mapmodel", "map\\model" },
@@ -60,9 +61,32 @@ public class HolyBeastUnzipper
             string inputDirectory = args[0];
             string outputDirectory = args[1];
 
+            Dictionary<string, string> mappingfolder = new Dictionary<string, string>(folder);
+            for (int i = 0; i <= 5; i++)
+            {
+                for (int z = 0; z < 36; z++)
+                {
+                    for (int j = 1; j <= 99; j++)
+                    {
+                        if (z < 10)
+                        {
+                            mappingfolder["mapmodel" + i + z + "_" + j.ToString("00")] = "map\\model\\" + i + z + "_" + j.ToString("00");
+                            mappingfolder["mapmodel" + i + z + "_" + j.ToString("00") + "_0000"] = "map\\model\\" + i + z + "_" + j.ToString("00") + "_0000";
+                            mappingfolder["maptexture" + i + z + "_" + j.ToString("00")] = "map\\texture\\" + i + z + "_" + j.ToString("00");
+                        }
+                        else
+                        {
+                            mappingfolder["mapmodel" + i + (char)('a' + z - 10) + "_" + j.ToString("00")] = "map\\model\\" + i + (char)('a' + z - 10) + "_" + j.ToString("00");
+                            mappingfolder["mapmodel" + i + (char)('a' + z - 10) + "_" + j.ToString("00") + "_0000"] = "map\\model\\" + i + (char)('a' + z - 10) + "_" + j.ToString("00") + "_0000";
+                            mappingfolder["maptexture" + i + (char)('a' + z - 10) + "_" + j.ToString("00")] = "map\\texture\\" + i + (char)('a' + z - 10) + "_" + j.ToString("00");
+                        }
+                    }
+                }
+            }
+
             foreach (var file in Directory.GetFiles(inputDirectory))
             {
-                ProcessFile(file, outputDirectory);
+                ProcessFile(file, outputDirectory, mappingfolder);
             }
         }
         catch (Exception ex)
@@ -71,7 +95,7 @@ public class HolyBeastUnzipper
         }
     }
 
-    private static void ProcessFile(string inputFile, string outputDirectory)
+    private static void ProcessFile(string inputFile, string outputDirectory, Dictionary<string, string> mappingfolder)
     {
         if (!File.Exists(inputFile))
         {
@@ -98,7 +122,7 @@ public class HolyBeastUnzipper
                     entry.ExtractWithPassword(decryptedStream, password);
                     decryptedStream.Position = 0;
                     string sanitizedFileName = SanitizeFileName(entry.FileName);
-                    string NewNamePath = DecideFolderForFile(sanitizedFileName);
+                    string NewNamePath = DecideFolderForFile(sanitizedFileName, mappingfolder);
                     string outputPath = Path.Combine(outputDirectory, NewNamePath);
                     EnsureDirectoryExists(outputPath);
                     using (FileStream outFile = new FileStream(outputPath, FileMode.Create))
@@ -116,20 +140,16 @@ public class HolyBeastUnzipper
         Console.WriteLine($"Extract of {inputFile} finished !");
     }
 
-    private static string DecideFolderForFile(string filename)
+    private static string DecideFolderForFile(string filename, Dictionary<string, string> mapfolder)
     {
-        Dictionary<string, string> folderMappings = new Dictionary<string, string>(folder);
+        Dictionary<string, string> folderMappings;
         if (filename.StartsWith("map"))
         {
-            for (int i = 1; i <= 63; i++)
-            {
-                for (int j = 1; j <= 255; j++)
-                {
-                    folderMappings["mapmodel" + i.ToString("X2").ToLower() + "_" + j.ToString("X2").ToLower()] = "map\\model\\" + i.ToString("X2").ToLower() + "_" + j.ToString("X2").ToLower();
-                    folderMappings["mapmodel" + i.ToString("X2").ToLower() + "_" + j.ToString("X2").ToLower()+ "_0000"] = "map\\model\\" + i.ToString("X2").ToLower() + "_" + j.ToString("X2").ToLower() + "_0000";
-                    //folderMappings["maptexture" + i.ToString("X2").ToLower() + "_" + j.ToString("X2").ToLower()] = "map\\texture\\" + i.ToString("X2").ToLower() + "_" + j.ToString("X2").ToLower();
-                }
-            }
+            folderMappings = new Dictionary<string, string>(mapfolder);
+        }
+        else
+        {
+            folderMappings = new Dictionary<string, string>(folder);
         }
 
         foreach (string prefix in folderMappings.Keys.OrderByDescending(k => k.Length).ToList())
