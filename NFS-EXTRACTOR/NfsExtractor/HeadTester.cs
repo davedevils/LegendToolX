@@ -9,6 +9,7 @@ class HeadTester
 {
     public static bool IsValidDDSFile(byte[] data)
     {
+		if (data == null || data.Length == 0) return false;
         if (data.Length < 4)
         {
             return false;
@@ -18,30 +19,47 @@ class HeadTester
     }
     public static bool IsValidIniFile(byte[] data)
     {
-        string firstLine = Encoding.ASCII.GetString(data).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
-        return firstLine.StartsWith("|") && firstLine.EndsWith("|");
+		if (data == null || data.Length == 0) return false;
+		string content = Encoding.ASCII.GetString(data);
+		string[] lines = content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+		if (lines.Length == 0) return false;
+		string firstLine = lines[0];
+		return firstLine.StartsWith("|") && firstLine.EndsWith("|");
     }
 
     public static bool IsValidIni2File(byte[] data)
     {
-        string firstLine = Encoding.ASCII.GetString(data).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
+		if (data == null || data.Length == 0) return false;
+		string content = Encoding.ASCII.GetString(data);
+		string[] lines = content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+		if (lines.Length == 0) return false;
+		string firstLine = lines[0];
         return firstLine.StartsWith("[") && firstLine.EndsWith("]");
     }
 
     public static bool IsValidIniMapFile(byte[] data)
     {
-        string firstLine = Encoding.ASCII.GetString(data).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
+        if (data == null || data.Length == 0) return false;
+		string content = Encoding.ASCII.GetString(data);
+		string[] lines = content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+		if (lines.Length == 0) return false;
+		string firstLine = lines[0];
         return firstLine.StartsWith("[") && firstLine.EndsWith("],");
     }
 
     public static bool IsValidLayoutFile(byte[] data)
     {
-        string firstLine = Encoding.ASCII.GetString(data).Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries)[0];
+		if (data == null || data.Length == 0) return false;
+		string content = Encoding.ASCII.GetString(data);
+		string[] lines = content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+		if (lines.Length == 0) return false;
+		string firstLine = lines[0];
         return firstLine.StartsWith("<?xml");
     }
 
     public static bool IsValidNifFile(byte[] data)
     {
+		if (data == null || data.Length == 0) return false;
         if (data.Length < 40)
         {
             return false;
@@ -59,6 +77,7 @@ class HeadTester
 
     public static bool IsValidKMFFile(byte[] data)
     {
+		if (data == null || data.Length == 0) return false;
         if (data.Length < 20)
         {
             return false;
