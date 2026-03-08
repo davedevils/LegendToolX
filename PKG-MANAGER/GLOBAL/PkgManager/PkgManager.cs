@@ -428,5 +428,9 @@ namespace PkgManager.PkgManager
 			thread.IsBackground = true;
 			thread.Start();
 		}
+
+		private void PackAll_Click(object sender, EventArgs e)
+		{
+		}
 }
 }
