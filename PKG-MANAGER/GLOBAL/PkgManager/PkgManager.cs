@@ -140,20 +140,30 @@ namespace PkgManager.PkgManager
 			filesize.Add(item);
 		}
 
+		private string DecodeString(byte[] data)
+		{
+			string big5 = Encoding.GetEncoding(950).GetString(data);
+			char[] trimChars = new char[1];
+			big5 = big5.Trim(trimChars);
+			foreach (char c in big5)
+			{
+				if (c == '\uFFFD')
+				{
+					string utf8 = Encoding.UTF8.GetString(data);
+					return utf8.Trim(trimChars);
+				}
+			}
+			return big5;
+		}
+
 		private void ffname(byte[] ifname)
 		{
-			string @string = Encoding.GetEncoding(950).GetString(ifname);
-			List<string> list = filename;
-			char[] trimChars = new char[1];
-			list.Add(@string.Trim(trimChars));
+			filename.Add(DecodeString(ifname));
 		}
 
 		private void ffdir(byte[] ifdir)
 		{
-			string @string = Encoding.GetEncoding(950).GetString(ifdir);
-			List<string> list = filedir;
-			char[] trimChars = new char[1];
-			list.Add(@string.Trim(trimChars));
+			filedir.Add(DecodeString(ifdir));
 		}
 
 		private void ffpkg(byte[] ifpkg)
@@ -164,13 +174,7 @@ namespace PkgManager.PkgManager
 
 		private void filep(byte[] fd, byte[] fn)
 		{
-			string @string = Encoding.GetEncoding(950).GetString(fd);
-			string string2 = Encoding.GetEncoding(950).GetString(fn);
-			List<string> list = filepath;
-			char[] trimChars = new char[1];
-			string str = @string.Trim(trimChars);
-			char[] trimChars2 = new char[1];
-			list.Add(str + string2.Trim(trimChars2));
+			filepath.Add(DecodeString(fd) + DecodeString(fn));
 		}
 
 		private void listTodata()
