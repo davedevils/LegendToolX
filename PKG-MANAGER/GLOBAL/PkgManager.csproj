@@ -1,32 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <AssemblyName>Extractor</AssemblyName>
+    <AssemblyName>PkgManager</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <TargetFramework>net472</TargetFramework>
     <Prefer32Bit>True</Prefer32Bit>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>Preview</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Extractor</Authors>
-    <PackageId>Extractor</PackageId>
-    <StartupObject>Extractor.Program</StartupObject>
+    <Authors>PkgManager</Authors>
+    <PackageId>PkgManager</PackageId>
+    <StartupObject>PkgManager.Program</StartupObject>
     <ApplicationIcon>32officeicons-20_89419.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
-    <RootNamespace>Extractor</RootNamespace>
+    <RootNamespace>PkgManager</RootNamespace>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Extractor.Properties\**" />
-    <EmbeddedResource Remove="Extractor.Properties\**" />
-    <None Remove="Extractor.Properties\**" />
+    <Compile Remove="PkgManager.Properties\**" />
+    <EmbeddedResource Remove="PkgManager.Properties\**" />
+    <None Remove="PkgManager.Properties\**" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data">
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll</HintPath>
     </Reference>
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
     <Reference Include="System.Core">
       <HintPath>C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll</HintPath>
     </Reference>

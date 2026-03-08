@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Extractor.Extractor
+namespace PkgManager.PkgManager
 {
-    partial class Extractor
+    partial class PkgManager
     {
         /// <summary>
         /// Required designer variable.
@@ -43,7 +43,7 @@ namespace Extractor.Extractor
         /// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Extractor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PkgManager));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -66,7 +66,6 @@ namespace Extractor.Extractor
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(971, 460);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
@@ -78,7 +77,7 @@ namespace Extractor.Extractor
             this.button1.TabIndex = 1;
             this.button1.Text = "Unpack PKG";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.UnpackAll_Click);
             // 
             // label1
             // 
@@ -88,7 +87,6 @@ namespace Extractor.Extractor
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 2;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -109,10 +107,10 @@ namespace Extractor.Extractor
             this.button2.TabIndex = 4;
             this.button2.Text = "Unpack selected PKG";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.UnpackSelected_Click);
             // 
-            // Extractor
-            // 
+            // PkgManager
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 496);
@@ -123,9 +121,9 @@ namespace Extractor.Extractor
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Extractor";
-            this.Text = "XLeg Extractor";
-            this.Load += new System.EventHandler(this.Extractor_Load);
+            this.Name = "PkgManager";
+            this.Text = "XLeg PKG Manager";
+            this.Load += new System.EventHandler(this.PkgManager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

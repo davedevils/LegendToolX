@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Forms;
-using Extractor.Extractor;
+using PkgManager.PkgManager;
 
-namespace Extractor
+namespace PkgManager
 {
 	internal static class Program
 	{
@@ -11,7 +11,7 @@ namespace Extractor
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(defaultValue: false);
-			Application.Run(new Extractor.Extractor());
+			Application.Run(new PkgManager.PkgManager());
 		}
 	}
 }

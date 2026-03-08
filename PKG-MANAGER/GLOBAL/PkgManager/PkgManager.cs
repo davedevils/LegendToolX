@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Extractor.Extractor
+namespace PkgManager.PkgManager
 {
-    public partial class Extractor : Form
+    public partial class PkgManager : Form
     {
 		private delegate void SetTextCallback(string text);
 
@@ -60,12 +60,12 @@ namespace Extractor.Extractor
 		private List<string> filepath = new List<string>();
 
 
-		public Extractor()
+		public PkgManager()
 		{
 			InitializeComponent();
 		}
 
-		private void Extractor_Load(object sender, EventArgs e)
+		private void PkgManager_Load(object sender, EventArgs e)
 		{
 			Thread thread = new Thread(getidx);
 			thread.IsBackground = true;
@@ -237,7 +237,7 @@ namespace Extractor.Extractor
 			}
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void UnpackAll_Click(object sender, EventArgs e)
 		{
 			Thread thread = new Thread(extracter);
 			thread.IsBackground = true;
@@ -418,21 +418,11 @@ namespace Extractor.Extractor
 			}
 		}
 		
-		private void button2_Click(object sender, EventArgs e)
+		private void UnpackSelected_Click(object sender, EventArgs e)
         {
 			Thread thread = new Thread(extracter);
 			thread.IsBackground = true;
 			thread.Start();
 		}
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+}
 }
