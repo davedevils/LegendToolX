@@ -24,7 +24,7 @@ namespace NfsExtractor
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BrowsePackageIndex_Click(object sender, EventArgs e)
         {
             // Open crap box for txt
             this.openFileDialog1.Filter = "packageindex(*.*)|*.*|nfs.idx (*.idx)|*.idx";
@@ -114,7 +114,7 @@ namespace NfsExtractor
             }
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void LoadPackageIndex_Click(object sender, EventArgs e)
         {
             // Open FileList and do the cooking
             toolStripStatusLabel1.Text = "Loading PackageIndex ....";
@@ -218,7 +218,7 @@ namespace NfsExtractor
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void ExtractAll_Click(object sender, EventArgs e)
         {
             Task.Run(() => ExtractAllFiles());
         }
@@ -275,7 +275,7 @@ namespace NfsExtractor
         }
 
 
-        private void button9_Click(object sender, EventArgs e)
+        private void ExtractSelected_Click(object sender, EventArgs e)
         {
             // Unpack selected chunk
 
@@ -313,7 +313,7 @@ namespace NfsExtractor
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenFileList_Click(object sender, EventArgs e)
         {
             // load the file list
 
@@ -439,21 +439,13 @@ namespace NfsExtractor
                 dataGridView1.Rows[id].Cells[4].Value = data;
             }
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        public class FileScatter
+public class FileScatter
         {
             public ulong Hash { get; set; }
             public string RealName { get; set; }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void LoadScatterFile_Click(object sender, EventArgs e)
         {
  
             // Ok boyz let me explain, this is HASH so there is no way to recover without know it (i use brutefore but for sure better way exist)
@@ -551,7 +543,7 @@ namespace NfsExtractor
             File.WriteAllText(filePath, csvContent.ToString());
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void SaveCsv_Click(object sender, EventArgs e)
         {
 
             if (textBox1.Text == "" || LoadedDrive.valid == false)
@@ -567,11 +559,6 @@ namespace NfsExtractor
             SaveDataGridViewToCSV(dataGridView1, path);
             toolStripStatusLabel1.Text = "List saved at : " + path;
         }
-
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+}
 
 }

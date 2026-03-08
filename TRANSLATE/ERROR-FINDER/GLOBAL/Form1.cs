@@ -29,7 +29,7 @@ namespace TranslateErrorFinder
             Console.WriteLine("---------------*************-------------");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SelectFile_Click(object sender, EventArgs e)
         {
 
             this.openFileDialog1.Filter = "XLegend ini (*.ini)|*.ini";
@@ -46,7 +46,7 @@ namespace TranslateErrorFinder
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void StartCount_Click(object sender, EventArgs e)
         {
             if (t.IsAlive == true)
             {

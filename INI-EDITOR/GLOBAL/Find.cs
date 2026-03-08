@@ -36,21 +36,21 @@ namespace Ini_Editor
             CollList2.SelectedIndex = 0;
         }
 
-        private void SetTransparancy()
+        private void SetTransparency()
         {
-            float transparancy = Convert.ToSingle(trackBar1.Value) / 100;
-            if (transparancy > 0.10)
-                this.Opacity = transparancy;
+            float transparency = Convert.ToSingle(trackBar1.Value) / 100;
+            if (transparency > 0.10)
+                this.Opacity = transparency;
             else
                 this.Opacity = 0.10;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void FindTransparencyChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
             {
                 checkBox2.Checked = true;
-                SetTransparancy();
+                SetTransparency();
             }
             else
             {
@@ -59,12 +59,12 @@ namespace Ini_Editor
             }
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void ReplaceTransparencyChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked == true)
             {
                 checkBox1.Checked = true;
-                SetTransparancy();
+                SetTransparency();
             }
             else
             {
@@ -73,20 +73,20 @@ namespace Ini_Editor
             }
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void FindTransparencyScroll(object sender, EventArgs e)
         {
             trackBar2.Value = trackBar1.Value;
             if (checkBox1.Checked == true)
             {
-                SetTransparancy();
+                SetTransparency();
             }
         }
-        private void trackBar2_Scroll(object sender, EventArgs e)
+        private void ReplaceTransparencyScroll(object sender, EventArgs e)
         {
             trackBar1.Value = trackBar2.Value;
             if (checkBox2.Checked == true)
             {
-                SetTransparancy();
+                SetTransparency();
             }
         }
         private void loopreplace_CheckedChanged(object sender, EventArgs e)
@@ -121,28 +121,23 @@ namespace Ini_Editor
                 casefind.Checked = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FindNextClick(object sender, EventArgs e)
         {
             FindText();
         }
 
-        private void Find_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
+        private void FindCancelClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void searchtextbox_TextChanged(object sender, EventArgs e)
+        private void SearchTextChanged(object sender, EventArgs e)
         {
             //Empty The list
             FindList = new List<Form1.MemoryFind>();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void FindCountClick(object sender, EventArgs e)
         {
             CountText();
         }
@@ -202,7 +197,7 @@ namespace Ini_Editor
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void FindAllClick(object sender, EventArgs e)
         {
             String searchValue = searchtextbox.Text;
             FindList = MainForm.FindAllInCell(searchValue, CollList.Text, casefind.Checked);
@@ -218,22 +213,17 @@ namespace Ini_Editor
                 resultfind.Text = "Value not found :( ...";
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
+        private void ReplaceCancelClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void ReplaceNextClick(object sender, EventArgs e)
         {
             FindText();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void ReplaceClick(object sender, EventArgs e)
         {
             //replace
             string box_msg = "This function is not allowed on this version ! \nSorry !";
@@ -241,7 +231,7 @@ namespace Ini_Editor
             MessageBox.Show(box_msg, box_title);
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void ReplaceAllClick(object sender, EventArgs e)
         {
             //replace all
             string box_msg = "This function is not allowed on this version ! \nSorry !";
@@ -249,7 +239,7 @@ namespace Ini_Editor
             MessageBox.Show(box_msg, box_title);
         }
 
-        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        private void TabChanged(object sender, EventArgs e)
         {
             if(tabControl1.SelectedIndex == 0) 
                 this.Text = "Find";

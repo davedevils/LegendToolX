@@ -17,8 +17,8 @@ namespace Altra_Tool
         AltarMemory GMemory = new AltarMemory { };
         AltarMemory EMemory = new AltarMemory { };
         AltarMemory DMemory = new AltarMemory { };
-        int selectedhauter = 1;
-        int selectedlonger = 1;
+        int selectedHeight = 1;
+        int selectedWidth = 1;
         int currentAltar = 1;
         int autosave = 0;
         int showstats = 0;
@@ -60,8 +60,8 @@ namespace Altra_Tool
             radioButton1.Checked = true;
 
             // 1 - 1
-            selectedhauter = 1;
-            selectedlonger = 1;
+            selectedHeight = 1;
+            selectedWidth = 1;
             RefreshUiText();
 
             //Loading finish
@@ -105,7 +105,7 @@ namespace Altra_Tool
             pictureBox11.Visible = showthem;
             pictureBox12.Visible = showthem;
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void GemAltar_CheckedChanged(object sender, EventArgs e)
         {
             if (swapaltar == 1)
                 return;
@@ -146,7 +146,7 @@ namespace Altra_Tool
 
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void EcAltar_CheckedChanged(object sender, EventArgs e)
         {
             if (swapaltar == 1)
                 return;
@@ -185,7 +185,7 @@ namespace Altra_Tool
             swapaltar = 0;
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void DiamondAltar_CheckedChanged(object sender, EventArgs e)
         {
             if (swapaltar == 1)
                 return;
@@ -324,483 +324,472 @@ namespace Altra_Tool
                 }
             }
         }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+private void ItemFinder_Click(object sender, EventArgs e)
         {
             string message = "Give me time, i can't make all on day 1";
             MessageBox.Show(message);
         }
 
-        private void pictureBox42_Click(object sender, EventArgs e)
+        private void CellR1C1_Click(object sender, EventArgs e)
         {
             // 1 - 1
             if(autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 1;
-            selectedlonger = 1;
+            selectedHeight = 1;
+            selectedWidth = 1;
             RefreshUiText();
 
         }
 
-        private void pictureBox41_Click(object sender, EventArgs e)
+        private void CellR1C2_Click(object sender, EventArgs e)
         {
             // 1 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 1;
-            selectedlonger = 2;
+            selectedHeight = 1;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox40_Click(object sender, EventArgs e)
+        private void CellR1C3_Click(object sender, EventArgs e)
         {
             // 1 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 1;
-            selectedlonger = 3;
+            selectedHeight = 1;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox39_Click(object sender, EventArgs e)
+        private void CellR1C4_Click(object sender, EventArgs e)
         {
             // 1 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 1;
-            selectedlonger = 4;
+            selectedHeight = 1;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox38_Click(object sender, EventArgs e)
+        private void CellR1C5_Click(object sender, EventArgs e)
         {
             // 1 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 1;
-            selectedlonger = 5;
+            selectedHeight = 1;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox37_Click(object sender, EventArgs e)
+        private void CellR1C6_Click(object sender, EventArgs e)
         {
             // 1 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 1;
-            selectedlonger = 6;
+            selectedHeight = 1;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
-        private void pictureBox36_Click(object sender, EventArgs e)
+        private void CellR2C1_Click(object sender, EventArgs e)
         {
             // 2 - 1
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 2;
-            selectedlonger = 1;
+            selectedHeight = 2;
+            selectedWidth = 1;
             RefreshUiText();
         }
 
-        private void pictureBox35_Click(object sender, EventArgs e)
+        private void CellR2C2_Click(object sender, EventArgs e)
         {
             // 2 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 2;
-            selectedlonger = 2;
+            selectedHeight = 2;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox34_Click(object sender, EventArgs e)
+        private void CellR2C3_Click(object sender, EventArgs e)
         {
             // 2 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 2;
-            selectedlonger = 3;
+            selectedHeight = 2;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox33_Click(object sender, EventArgs e)
+        private void CellR2C4_Click(object sender, EventArgs e)
         {
             // 2 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 2;
-            selectedlonger = 4;
+            selectedHeight = 2;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox32_Click(object sender, EventArgs e)
+        private void CellR2C5_Click(object sender, EventArgs e)
         {
             // 2 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 2;
-            selectedlonger = 5;
+            selectedHeight = 2;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox31_Click(object sender, EventArgs e)
+        private void CellR2C6_Click(object sender, EventArgs e)
         {
             // 2 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 2;
-            selectedlonger = 6;
+            selectedHeight = 2;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
-        private void pictureBox30_Click(object sender, EventArgs e)
+        private void CellR3C1_Click(object sender, EventArgs e)
         {
             // 3 - 1
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 3;
-            selectedlonger = 1;
+            selectedHeight = 3;
+            selectedWidth = 1;
             RefreshUiText();
         }
 
-        private void pictureBox29_Click(object sender, EventArgs e)
+        private void CellR3C2_Click(object sender, EventArgs e)
         {
             // 3 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 3;
-            selectedlonger = 2;
+            selectedHeight = 3;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox28_Click(object sender, EventArgs e)
+        private void CellR3C3_Click(object sender, EventArgs e)
         {
             // 3 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 3;
-            selectedlonger = 3;
+            selectedHeight = 3;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox27_Click(object sender, EventArgs e)
+        private void CellR3C4_Click(object sender, EventArgs e)
         {
             // 3 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 3;
-            selectedlonger = 4;
+            selectedHeight = 3;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox26_Click(object sender, EventArgs e)
+        private void CellR3C5_Click(object sender, EventArgs e)
         {
             // 3 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 3;
-            selectedlonger = 5;
+            selectedHeight = 3;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox25_Click(object sender, EventArgs e)
+        private void CellR3C6_Click(object sender, EventArgs e)
         {
             // 3 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 3;
-            selectedlonger = 6;
+            selectedHeight = 3;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
-        private void pictureBox24_Click(object sender, EventArgs e)
+        private void CellR4C1_Click(object sender, EventArgs e)
         {
             // 4 - 1
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 4;
-            selectedlonger = 1;
+            selectedHeight = 4;
+            selectedWidth = 1;
             RefreshUiText();
         }
 
-        private void pictureBox23_Click(object sender, EventArgs e)
+        private void CellR4C2_Click(object sender, EventArgs e)
         {
             // 4 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 4;
-            selectedlonger = 2;
+            selectedHeight = 4;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox22_Click(object sender, EventArgs e)
+        private void CellR4C3_Click(object sender, EventArgs e)
         {
             // 4 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 4;
-            selectedlonger = 3;
+            selectedHeight = 4;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox21_Click(object sender, EventArgs e)
+        private void CellR4C4_Click(object sender, EventArgs e)
         {
             // 4 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 4;
-            selectedlonger = 4;
+            selectedHeight = 4;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox20_Click(object sender, EventArgs e)
+        private void CellR4C5_Click(object sender, EventArgs e)
         {
             // 4 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 4;
-            selectedlonger = 5;
+            selectedHeight = 4;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox19_Click(object sender, EventArgs e)
+        private void CellR4C6_Click(object sender, EventArgs e)
         {
             // 4 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 4;
-            selectedlonger = 6;
+            selectedHeight = 4;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
-        private void pictureBox18_Click(object sender, EventArgs e)
+        private void CellR5C1_Click(object sender, EventArgs e)
         {
             // 5 - 1
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 5;
-            selectedlonger = 1;
+            selectedHeight = 5;
+            selectedWidth = 1;
             RefreshUiText();
         }
 
-        private void pictureBox17_Click(object sender, EventArgs e)
+        private void CellR5C2_Click(object sender, EventArgs e)
         {
             // 5 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 5;
-            selectedlonger = 2;
+            selectedHeight = 5;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox16_Click(object sender, EventArgs e)
+        private void CellR5C3_Click(object sender, EventArgs e)
         {
             // 5 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 5;
-            selectedlonger = 3;
+            selectedHeight = 5;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox15_Click(object sender, EventArgs e)
+        private void CellR5C4_Click(object sender, EventArgs e)
         {
             // 5 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 5;
-            selectedlonger = 4;
+            selectedHeight = 5;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox14_Click(object sender, EventArgs e)
+        private void CellR5C5_Click(object sender, EventArgs e)
         {
             // 5 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 5;
-            selectedlonger = 5;
+            selectedHeight = 5;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox13_Click(object sender, EventArgs e)
+        private void CellR5C6_Click(object sender, EventArgs e)
         {
             // 5 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 5;
-            selectedlonger = 6;
+            selectedHeight = 5;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
-        private void pictureBox12_Click(object sender, EventArgs e)
+        private void CellR6C1_Click(object sender, EventArgs e)
         {
             // 6 - 1
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 6;
-            selectedlonger = 1;
+            selectedHeight = 6;
+            selectedWidth = 1;
             RefreshUiText();
         }
 
-        private void pictureBox11_Click(object sender, EventArgs e)
+        private void CellR6C2_Click(object sender, EventArgs e)
         {
             // 6 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 6;
-            selectedlonger = 2;
+            selectedHeight = 6;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox10_Click(object sender, EventArgs e)
+        private void CellR6C3_Click(object sender, EventArgs e)
         {
             // 6 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 6;
-            selectedlonger = 3;
+            selectedHeight = 6;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox9_Click(object sender, EventArgs e)
+        private void CellR6C4_Click(object sender, EventArgs e)
         {
             // 6 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 6;
-            selectedlonger = 4;
+            selectedHeight = 6;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox8_Click(object sender, EventArgs e)
+        private void CellR6C5_Click(object sender, EventArgs e)
         {
             // 6 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 6;
-            selectedlonger = 5;
+            selectedHeight = 6;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void CellR6C6_Click(object sender, EventArgs e)
         {
             // 6 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 6;
-            selectedlonger = 6;
+            selectedHeight = 6;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void CellR7C1_Click(object sender, EventArgs e)
         {
             // 7 - 1
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 7;
-            selectedlonger = 1;
+            selectedHeight = 7;
+            selectedWidth = 1;
             RefreshUiText();
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void CellR7C2_Click(object sender, EventArgs e)
         {
             // 7 - 2
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 7;
-            selectedlonger = 2;
+            selectedHeight = 7;
+            selectedWidth = 2;
             RefreshUiText();
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void CellR7C3_Click(object sender, EventArgs e)
         {
             // 7 - 3
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 7;
-            selectedlonger = 3;
+            selectedHeight = 7;
+            selectedWidth = 3;
             RefreshUiText();
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void CellR7C4_Click(object sender, EventArgs e)
         {
             // 7 - 4
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 7;
-            selectedlonger = 4;
+            selectedHeight = 7;
+            selectedWidth = 4;
             RefreshUiText();
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void CellR7C5_Click(object sender, EventArgs e)
         {
             // 7 - 5
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 7;
-            selectedlonger = 5;
+            selectedHeight = 7;
+            selectedWidth = 5;
             RefreshUiText();
         }
 
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void CellR7C6_Click(object sender, EventArgs e)
         {
             // 7 - 6
             if (autosave == 1)
                 SaveCaseChange();
 
-            selectedhauter = 7;
-            selectedlonger = 6;
+            selectedHeight = 7;
+            selectedWidth = 6;
             RefreshUiText();
         }
 
@@ -825,16 +814,16 @@ namespace Altra_Tool
 
         private void RefreshUiText()
         {
-            casenum.Text = selectedhauter + " - " + selectedlonger;
+            casenum.Text = selectedHeight + " - " + selectedWidth;
 
             RowAltar Row;
 
             if (currentAltar == 1)
-                Row = GMemory.rows.SingleOrDefault(x => x.hauter == selectedhauter && x.longer == selectedlonger);
+                Row = GMemory.rows.SingleOrDefault(x => x.hauter == selectedHeight && x.longer == selectedWidth);
             else if (currentAltar == 2)
-                Row = EMemory.rows.SingleOrDefault(x => x.hauter == selectedhauter && x.longer == selectedlonger);
+                Row = EMemory.rows.SingleOrDefault(x => x.hauter == selectedHeight && x.longer == selectedWidth);
             else
-                Row = DMemory.rows.SingleOrDefault(x => x.hauter == selectedhauter && x.longer == selectedlonger);
+                Row = DMemory.rows.SingleOrDefault(x => x.hauter == selectedHeight && x.longer == selectedWidth);
 
            
             if (Row != null)
@@ -1129,7 +1118,7 @@ namespace Altra_Tool
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void SaveCase_Click(object sender, EventArgs e)
         {
             SaveCaseChange();
         }
@@ -1140,26 +1129,26 @@ namespace Altra_Tool
             if (currentAltar == 1)
             {
                 if (GMemory.rows.Count > 0)
-                    GMemory.rows.Remove(GMemory.rows.SingleOrDefault(x => x.hauter == selectedhauter && x.longer == selectedlonger));
+                    GMemory.rows.Remove(GMemory.rows.SingleOrDefault(x => x.hauter == selectedHeight && x.longer == selectedWidth));
 
                 // Save row
-                GMemory.rows.Add(new RowAltar() { hauter = selectedhauter, longer = selectedlonger, itemid = itemidtext.Text, quantity = quantitytext.Text, luckrate = luckratetext.Text, annouce = announcegain.Checked, resetbonus = resetbonustext.Checked, lockscroll = lockscrolltext.Checked });
+                GMemory.rows.Add(new RowAltar() { hauter = selectedHeight, longer = selectedWidth, itemid = itemidtext.Text, quantity = quantitytext.Text, luckrate = luckratetext.Text, annouce = announcegain.Checked, resetbonus = resetbonustext.Checked, lockscroll = lockscrolltext.Checked });
 
             }
             else if (currentAltar == 2)
             {
                 if (EMemory.rows.Count > 0)
-                    EMemory.rows.Remove(EMemory.rows.SingleOrDefault(x => x.hauter == selectedhauter && x.longer == selectedlonger));
+                    EMemory.rows.Remove(EMemory.rows.SingleOrDefault(x => x.hauter == selectedHeight && x.longer == selectedWidth));
                 // Save row
-                EMemory.rows.Add(new RowAltar() { hauter = selectedhauter, longer = selectedlonger, itemid = itemidtext.Text, quantity = quantitytext.Text, luckrate = luckratetext.Text, annouce = announcegain.Checked, resetbonus = resetbonustext.Checked, lockscroll = lockscrolltext.Checked });
+                EMemory.rows.Add(new RowAltar() { hauter = selectedHeight, longer = selectedWidth, itemid = itemidtext.Text, quantity = quantitytext.Text, luckrate = luckratetext.Text, annouce = announcegain.Checked, resetbonus = resetbonustext.Checked, lockscroll = lockscrolltext.Checked });
 
             }
             else
             {
                 if (DMemory.rows.Count > 0)
-                    DMemory.rows.Remove(DMemory.rows.SingleOrDefault(x => x.hauter == selectedhauter && x.longer == selectedlonger));
+                    DMemory.rows.Remove(DMemory.rows.SingleOrDefault(x => x.hauter == selectedHeight && x.longer == selectedWidth));
                 // Save row
-                DMemory.rows.Add(new RowAltar() { hauter = selectedhauter, longer = selectedlonger, itemid = itemidtext.Text, quantity = quantitytext.Text, luckrate = luckratetext.Text, annouce = announcegain.Checked, resetbonus = resetbonustext.Checked, lockscroll = lockscrolltext.Checked });
+                DMemory.rows.Add(new RowAltar() { hauter = selectedHeight, longer = selectedWidth, itemid = itemidtext.Text, quantity = quantitytext.Text, luckrate = luckratetext.Text, annouce = announcegain.Checked, resetbonus = resetbonustext.Checked, lockscroll = lockscrolltext.Checked });
 
             }
 
@@ -1178,21 +1167,21 @@ namespace Altra_Tool
             Imgname = path1 + Imgname + ".dds";
             if (File.Exists(Imgname))
             {
-                UpdatePicture(selectedhauter, selectedlonger, Imgname);
+                UpdatePicture(selectedHeight, selectedWidth, Imgname);
             }
             else
             {
-                ErasePicture(selectedhauter, selectedlonger);
+                ErasePicture(selectedHeight, selectedWidth);
             }
 
             if (showstats == 1)
             {
-                UpdateStats(selectedhauter, selectedlonger);
+                UpdateStats(selectedHeight, selectedWidth);
             }
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SaveCurrent_Click(object sender, EventArgs e)
         {
             SaveAltarToFile(currentAltar);
             string message = "Current Altar Saved !";
@@ -1226,7 +1215,7 @@ namespace Altra_Tool
             AMemory = null;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void GenerateSql_Click(object sender, EventArgs e)
         {
             // generate SQL
 
@@ -1320,7 +1309,7 @@ namespace Altra_Tool
             MessageBox.Show(message);
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void AutoSave_CheckedChanged(object sender, EventArgs e)
         {
             // Auto save
             if (checkBox1.Checked == true)
@@ -1329,7 +1318,7 @@ namespace Altra_Tool
                 autosave = 0;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void SaveAllAltar_Click(object sender, EventArgs e)
         {
             // Save all altar
             SaveAltarToFile(1);
@@ -1342,7 +1331,7 @@ namespace Altra_Tool
 
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void ShowStats_CheckedChanged(object sender, EventArgs e)
         {
             // Show Stat
             if (ShowStat.Checked == true)

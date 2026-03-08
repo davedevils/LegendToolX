@@ -505,9 +505,9 @@ namespace Ini_Editor
                                     }
                                     else
                                     {
-                                        dataGridView1.Columns[i].Name = "Unknow " + i;
+                                        dataGridView1.Columns[i].Name = "Unknown " + i;
                                         Array.Resize(ref ColumnsHeader, ColumnsHeader.Length + 1);
-                                        ColumnsHeader[ColumnsHeader.Length - 1] = "Unknow " + i;
+                                        ColumnsHeader[ColumnsHeader.Length - 1] = "Unknown " + i;
                                     }
                                 }
 
@@ -524,10 +524,10 @@ namespace Ini_Editor
                                 dataGridView1.ColumnCount = ColNumber;
                                 for (int i = 0; i < ColNumber; i++)
                                 {
-                                    dataGridView1.Columns[i].Name = "Unknow " + i;
+                                    dataGridView1.Columns[i].Name = "Unknown " + i;
                                     NewFile.WriteLine(dataGridView1.Columns[i].Name);
                                     Array.Resize(ref ColumnsHeader, ColumnsHeader.Length + 1);
-                                    ColumnsHeader[ColumnsHeader.Length - 1] = "Unknow " + i;
+                                    ColumnsHeader[ColumnsHeader.Length - 1] = "Unknown " + i;
                                 }
                             }
                         }

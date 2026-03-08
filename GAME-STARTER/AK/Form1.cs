@@ -25,12 +25,7 @@ namespace StartGame
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Login_Click(object sender, EventArgs e)
         {
 			try {
 
@@ -72,11 +67,6 @@ namespace StartGame
 			{
 				Console.Write("Game start failed! You either need to run this as admin or your game.bin does not exist!\r\n\r\n");
 			}
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-			
 		}
 
 		public string MD5_encode(string str_encode)

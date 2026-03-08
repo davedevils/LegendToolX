@@ -18,12 +18,7 @@ namespace HBO_Renamer
             InitializeComponent();
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void SelectFolder_Click(object sender, EventArgs e)
         {
             using (var path = new FolderBrowserDialog())
             {
@@ -36,7 +31,7 @@ namespace HBO_Renamer
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void RenameAndPlace_Click(object sender, EventArgs e)
         {
             string[] files = Directory.GetFiles(textBox1.Text);
             MessageBox.Show("Please now, WAIT, don't click until he say finish after this window ! \n THAT CAN BE VERY LONG (50 min more) !", "Info !");

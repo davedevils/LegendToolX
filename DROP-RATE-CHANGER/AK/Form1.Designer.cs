@@ -44,7 +44,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Change Number Drop";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.ChangeDropNumber_Click);
             // 
             // textBox1
             // 
@@ -66,8 +66,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
+            //
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(175, 39);
@@ -76,7 +75,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Change Drop Luck";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.ChangeDropLuck_Click);
             // 
             // button3
             // 
@@ -86,7 +85,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Change MaxDrop";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ChangeMaxDrop_Click);
             // 
             // Form1
             // 

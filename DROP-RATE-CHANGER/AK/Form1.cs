@@ -23,10 +23,6 @@ namespace DropRateChanger
             InitializeComponent();
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
         public string[] CutLine(string line)
         {
             string[] returndata = { "0" , "0" };
@@ -66,7 +62,6 @@ namespace DropRateChanger
             Encoding big5 = Encoding.GetEncoding("big5");
 
             System.IO.StreamReader file = new System.IO.StreamReader(filename, big5, true);
-            string nameoutput = Path.GetFileName(filename);
 
             if (File.Exists("tmp.conv"))
             {
@@ -74,17 +69,17 @@ namespace DropRateChanger
             }
 
             //Now Read line by Line
-            int lignenumber = 1;
+            int lineNum = 1;
             int maxint = 0;
             while ((line = file.ReadLine()) != null)
             {
 
-                if (line.Count(c => c == '|') < 3 && lignenumber == 1)
+                if (line.Count(c => c == '|') < 3 && lineNum == 1)
                     break;
 
                 using (System.IO.StreamWriter fileoutput = new System.IO.StreamWriter("tmp.conv", true, big5))
                 {
-                    if (lignenumber != 1 && line.Contains('|') == true && maxint != 0)
+                    if (lineNum != 1 && line.Contains('|') == true && maxint != 0)
                     {
                         string[] returndata = CutLine(line);
                         line = "";
@@ -117,7 +112,7 @@ namespace DropRateChanger
                             line += returndata[i] + "|";
                         }
                     }
-                    else if (lignenumber == 1)
+                    else if (lineNum == 1)
                     {
 
                         string[] returndata = CutLine(line);
@@ -137,12 +132,12 @@ namespace DropRateChanger
                     fileoutput.Write(line);
                 }
 
-                lignenumber++;
+                lineNum++;
             }
             file.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ChangeDropNumber_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -174,20 +169,20 @@ namespace DropRateChanger
                     }
 
                     //Now Read line by Line
-                    int lignenumber = 1;
+                    int lineNum = 1;
                     int whilelimit = 1;
                     while ((line = file.ReadLine()) != null)
                     {
                         using (System.IO.StreamWriter fileoutput = new System.IO.StreamWriter(path + "\\Edited_" + nameoutput , true, big5))
                         {
                             int DropCol = 11;
-                            if (lignenumber == 1)
+                            if (lineNum == 1)
                             {
                                 string[] returndata = CutLine(line);
                                 int.TryParse(returndata[2], out whilelimit);
                             }
 
-                            if (lignenumber != 1 && line.Contains('|') == true)
+                            if (lineNum != 1 && line.Contains('|') == true)
                             {
                                 int multiplicator;
                                 string[] returndata = CutLine(line);
@@ -215,7 +210,7 @@ namespace DropRateChanger
                            fileoutput.WriteLine(line);
                         }
 
-                        lignenumber++;
+                        lineNum++;
                     }
                     file.Close();
                 }
@@ -233,7 +228,7 @@ namespace DropRateChanger
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ChangeDropLuck_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -263,7 +258,7 @@ namespace DropRateChanger
                     }
 
                     //Now Read line by Line
-                    int lignenumber = 1;
+                    int lineNum = 1;
                     int whilelimit = 1;
                     while ((line = file.ReadLine()) != null)
                     {
@@ -271,13 +266,13 @@ namespace DropRateChanger
                         {
                             //DropLuck
                             int DropCol = 12;
-                            if (lignenumber == 1)
+                            if (lineNum == 1)
                             {
                                 string[] returndata = CutLine(line);
                                 int.TryParse(returndata[2], out whilelimit);
                             }
 
-                            if (lignenumber != 1 && line.Contains('|') == true)
+                            if (lineNum != 1 && line.Contains('|') == true)
                             {
                                 string[] returndata = CutLine(line);
                                 line = "";
@@ -305,7 +300,7 @@ namespace DropRateChanger
                             fileoutput.WriteLine(line);
                         }
 
-                        lignenumber++;
+                        lineNum++;
                     }
                     file.Close();
                 }
@@ -323,7 +318,7 @@ namespace DropRateChanger
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ChangeMaxDrop_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -353,7 +348,7 @@ namespace DropRateChanger
                     }
 
                     //Now Read line by Line
-                    int lignenumber = 1;
+                    int lineNum = 1;
                     int whilelimit = 1;
                     while ((line = file.ReadLine()) != null)
                     {
@@ -361,13 +356,13 @@ namespace DropRateChanger
                         {
                             //DropLuck
                             int DropCol = 6;
-                            if (lignenumber == 1)
+                            if (lineNum == 1)
                             {
                                 string[] returndata = CutLine(line);
                                 int.TryParse(returndata[2], out whilelimit);
                             }
 
-                            if (lignenumber != 1 && line.Contains('|') == true)
+                            if (lineNum != 1 && line.Contains('|') == true)
                             {
                                 string[] returndata = CutLine(line);
                                 line = "";
@@ -394,7 +389,7 @@ namespace DropRateChanger
                             fileoutput.WriteLine(line);
                         }
 
-                        lignenumber++;
+                        lineNum++;
                     }
                     file.Close();
                 }

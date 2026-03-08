@@ -79,7 +79,7 @@
             this.searchtextbox.Name = "searchtextbox";
             this.searchtextbox.Size = new System.Drawing.Size(308, 20);
             this.searchtextbox.TabIndex = 0;
-            this.searchtextbox.TextChanged += new System.EventHandler(this.searchtextbox_TextChanged);
+            this.searchtextbox.TextChanged += new System.EventHandler(this.SearchTextChanged);
             // 
             // label1
             // 
@@ -100,7 +100,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transparancy";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // trackBar1
             // 
@@ -112,7 +111,7 @@
             this.trackBar1.TabIndex = 6;
             this.trackBar1.TickFrequency = 5;
             this.trackBar1.Value = 10;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBar1.Scroll += new System.EventHandler(this.FindTransparencyScroll);
             // 
             // checkBox1
             // 
@@ -123,7 +122,7 @@
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Transparency";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.FindTransparencyChanged);
             // 
             // button1
             // 
@@ -133,7 +132,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Next";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.FindNextClick);
             // 
             // button2
             // 
@@ -143,7 +142,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Count";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.FindCountClick);
             // 
             // button3
             // 
@@ -153,7 +152,7 @@
             this.button3.TabIndex = 5;
             this.button3.Text = "Find All";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.FindAllClick);
             // 
             // button4
             // 
@@ -163,7 +162,7 @@
             this.button4.TabIndex = 6;
             this.button4.Text = "Cancel";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.button4.Click += new System.EventHandler(this.FindCancelClick);
             // 
             // CollList
             // 
@@ -200,7 +199,7 @@
             this.tabControl1.Size = new System.Drawing.Size(389, 228);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 1;
-            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
+            this.tabControl1.TabIndexChanged += new System.EventHandler(this.TabChanged);
             // 
             // tabPage1
             // 
@@ -317,7 +316,7 @@
             this.trackBar2.TabIndex = 6;
             this.trackBar2.TickFrequency = 5;
             this.trackBar2.Value = 10;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.trackBar2.Scroll += new System.EventHandler(this.ReplaceTransparencyScroll);
             // 
             // checkBox2
             // 
@@ -328,7 +327,7 @@
             this.checkBox2.TabIndex = 6;
             this.checkBox2.Text = "Transparency";
             this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.ReplaceTransparencyChanged);
             // 
             // textBox2
             // 
@@ -354,7 +353,7 @@
             this.button5.TabIndex = 12;
             this.button5.Text = "Replace";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.ReplaceClick);
             // 
             // textBox1
             // 
@@ -397,7 +396,7 @@
             this.button6.TabIndex = 11;
             this.button6.Text = "Next";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.ReplaceNextClick);
             // 
             // button7
             // 
@@ -407,7 +406,7 @@
             this.button7.TabIndex = 14;
             this.button7.Text = "Cancel";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.ReplaceCancelClick);
             // 
             // button8
             // 
@@ -417,7 +416,7 @@
             this.button8.TabIndex = 13;
             this.button8.Text = "Replace All";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.ReplaceAllClick);
             // 
             // resultfind
             // 
@@ -449,7 +448,6 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Find / Replace";
-            this.Load += new System.EventHandler(this.Find_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();

@@ -66,7 +66,7 @@ namespace NfsExtractor
             this.button1.TabIndex = 0;
             this.button1.Text = "Select File";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.BrowsePackageIndex_Click);
             // 
             // textBox1
             // 
@@ -84,7 +84,7 @@ namespace NfsExtractor
             this.button6.TabIndex = 5;
             this.button6.Text = "I\'m ANGRY UNPACK ALL";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.ExtractAll_Click);
             // 
             // button2
             // 
@@ -95,7 +95,7 @@ namespace NfsExtractor
             this.button2.TabIndex = 6;
             this.button2.Text = "Open FileList";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.OpenFileList_Click);
             // 
             // button7
             // 
@@ -105,7 +105,7 @@ namespace NfsExtractor
             this.button7.TabIndex = 8;
             this.button7.Text = "Load";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button7.Click += new System.EventHandler(this.LoadPackageIndex_Click);
             // 
             // dataGridView1
             // 
@@ -124,7 +124,7 @@ namespace NfsExtractor
             this.button9.TabIndex = 10;
             this.button9.Text = "UNPACK Selected";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button9.Click += new System.EventHandler(this.ExtractSelected_Click);
             // 
             // groupBox1
             // 
@@ -154,7 +154,7 @@ namespace NfsExtractor
             this.button4.TabIndex = 12;
             this.button4.Text = "Use Scratter file";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.LoadScatterFile_Click);
             // 
             // button3
             // 
@@ -167,7 +167,7 @@ namespace NfsExtractor
             this.button3.TabIndex = 11;
             this.button3.Text = "Save as List.csv";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.SaveCsv_Click);
             // 
             // statusStrip1
             // 
@@ -185,7 +185,6 @@ namespace NfsExtractor
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(45, 17);
             this.toolStripStatusLabel1.Text = "Ready !";
-            this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
             // toolStripStatusLabel2
             // 

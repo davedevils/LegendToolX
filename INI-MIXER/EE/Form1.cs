@@ -31,18 +31,7 @@ namespace Ini_Mixer
             Console.WriteLine("-------------------------------");
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void button3_Click(object sender, EventArgs e)
+        private void StartMix_Click(object sender, EventArgs e)
         {
             if (t.IsAlive == true)
             {
@@ -74,7 +63,7 @@ namespace Ini_Mixer
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BrowseOriginalFolder_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -103,7 +92,7 @@ namespace Ini_Mixer
             */
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BrowseDataFolder_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -130,11 +119,6 @@ namespace Ini_Mixer
                 textBox2.Text = nameoutput;
             }
             */
-        }
-
-        private void security_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 
@@ -244,7 +228,7 @@ namespace Ini_Mixer
                 GeneralFunc BasicFunc = new GeneralFunc();
                 //Ok now we need data bro
                 Encoding big5 = Encoding.GetEncoding("big5");
-                int lignenumber = 1;
+                int lineNum = 1;
                 Console.Write("Triming Original file");
                 List<string> file = BasicFunc.TrimFileList(Path1o + "/" + newTextfile, allowedjump);
                 bool istranslatefile = false;
@@ -254,7 +238,7 @@ namespace Ini_Mixer
                     if (newTextfile.Contains("t_"))
                         istranslatefile = true;
 
-                    if (line.Count(c => c == '|') != 3 && lignenumber == 1 && istranslatefile == false)
+                    if (line.Count(c => c == '|') != 3 && lineNum == 1 && istranslatefile == false)
                     {
                         string boxmsg = "Original file is not a valid Xlegend ini file. \nSorry i will not open it!";
                         string boxtitle = "Error in the INI file";
@@ -266,11 +250,11 @@ namespace Ini_Mixer
 
                     if (istranslatefile == false)
                     {
-                        if (lignenumber != 1 && line.Contains('|') == true)
+                        if (lineNum != 1 && line.Contains('|') == true)
                         {
                             OriginalRow.Add(BasicFunc.CutLineVertical(line));
                         }
-                        else if (lignenumber == 1)
+                        else if (lineNum == 1)
                         {
                             string[] returndata = BasicFunc.CutLineVertical(line);
                             ColNumberOri = Int32.Parse(returndata[2]);
@@ -279,29 +263,29 @@ namespace Ini_Mixer
                     }
                     else
                     {
-                        if (lignenumber != 1 && lignenumber != 2 && line.Contains('|') == true)
+                        if (lineNum != 1 && lineNum != 2 && line.Contains('|') == true)
                         {
                             OriginalRow.Add(BasicFunc.CutLineVertical(line));
                         }
-                        else if (lignenumber == 1)
+                        else if (lineNum == 1)
                         {
                             string[] returndata = BasicFunc.CutLineVertical(line);
                             ColNumberOri = Int32.Parse(returndata[0]);
                             HeaderOriginal = line;
                         }
-                        else if (lignenumber == 2)
+                        else if (lineNum == 2)
                         {
                             HeaderTransOriginal = line;
                         }
                     }
-                    lignenumber++;
+                    lineNum++;
                 }
                 Console.Write(" - done \n");
 
                 if (fail == true)
                     continue;
 
-                lignenumber = 1;
+                lineNum = 1;
                 Console.Write("Triming Data file");
                 file = BasicFunc.TrimFileList(Path2o + "/" + newTextfile, allowedjump);
                 foreach (string line in file)
@@ -310,7 +294,7 @@ namespace Ini_Mixer
                     if (newTextfile.Contains("t_"))
                         istranslatefile = true;
 
-                    if (line.Count(c => c == '|') != 3 && lignenumber == 1 && istranslatefile == false)
+                    if (line.Count(c => c == '|') != 3 && lineNum == 1 && istranslatefile == false)
                     {
                         string boxmsg = "Data File is not a valid Xlegend ini file. \nSorry i will not open it!";
                         string boxtitle = "Error in the INI file";
@@ -322,11 +306,11 @@ namespace Ini_Mixer
 
                     if (istranslatefile == false)
                     {
-                        if (lignenumber != 1 && line.Contains('|') == true)
+                        if (lineNum != 1 && line.Contains('|') == true)
                         {
                             DataRow.Add(BasicFunc.CutLineVertical(line));
                         }
-                        else if (lignenumber == 1)
+                        else if (lineNum == 1)
                         {
                             string[] returndata = BasicFunc.CutLineVertical(line);
                             ColNumber = Int32.Parse(returndata[2]);
@@ -335,24 +319,24 @@ namespace Ini_Mixer
                     }
                     else
                     {
-                        if (lignenumber != 1 && lignenumber != 2 && line.Contains('|') == true)
+                        if (lineNum != 1 && lineNum != 2 && line.Contains('|') == true)
                         {
                             DataRow.Add(BasicFunc.CutLineVertical(line));
                         }
-                        else if (lignenumber == 1)
+                        else if (lineNum == 1)
                         {
                             string[] returndata = BasicFunc.CutLineVertical(line);
                             ColNumber = Int32.Parse(returndata[0]);
                             HeaderData = line;
                         }
-                        else if (lignenumber == 2)
+                        else if (lineNum == 2)
                         {
                             HeaderTransOriginal = line;
                         }
                     }
 
 
-                    lignenumber++;
+                    lineNum++;
                 }
                 Console.Write(" - done \n");
 

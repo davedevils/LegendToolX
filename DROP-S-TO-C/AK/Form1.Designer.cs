@@ -35,8 +35,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
+            //
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(14, 13);
@@ -46,7 +45,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Safe My Shit";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.ProtectDropFile_Click);
             // 
             // Form1
             // 

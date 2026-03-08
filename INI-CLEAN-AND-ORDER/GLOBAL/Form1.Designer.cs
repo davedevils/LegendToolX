@@ -55,7 +55,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Select File";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.BrowseFolder_Click);
             // 
             // button3
             // 
@@ -65,7 +65,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Clean File";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.StartClean_Click);
             // 
             // textBox1
             // 
@@ -85,7 +85,6 @@
             this.security.Text = "Use Folder OUT";
             this.security.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.security.UseVisualStyleBackColor = true;
-            this.security.CheckedChanged += new System.EventHandler(this.security_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -98,7 +97,6 @@
             this.checkBox1.Text = "Don\'t delete jump-line";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // removeduplicate
             // 
@@ -109,7 +107,6 @@
             this.removeduplicate.TabIndex = 8;
             this.removeduplicate.Text = "Remove Duplicate";
             this.removeduplicate.UseVisualStyleBackColor = true;
-            this.removeduplicate.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Form1
             // 
@@ -129,7 +126,6 @@
             this.MinimumSize = new System.Drawing.Size(440, 177);
             this.Name = "Form1";
             this.Text = "Ini Cleaner";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

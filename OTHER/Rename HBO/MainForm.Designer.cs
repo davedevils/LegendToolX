@@ -45,7 +45,7 @@ namespace HBO_Renamer
             this.button1.TabIndex = 0;
             this.button1.Text = "Folder Select";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.SelectFolder_Click);
             // 
             // textBox1
             // 
@@ -63,7 +63,7 @@ namespace HBO_Renamer
             this.button2.TabIndex = 2;
             this.button2.Text = "Rename & Place on folder";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.RenameAndPlace_Click);
             // 
             // label1
             // 
@@ -92,7 +92,6 @@ namespace HBO_Renamer
             this.MinimumSize = new System.Drawing.Size(431, 114);
             this.Name = "MainForm";
             this.Text = "HBO Renamer";
-            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

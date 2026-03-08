@@ -35,11 +35,11 @@ int main(int argc, char* argv[])
 				break;
 			}
 
-			if (argv[argc] == "1")
+			if (argv[argc-1] == "1")
 			{
 				result = FileCryptDecrypt(sFileName, 1);
 			}
-			else if (argv[argc] == "2")
+			else if (argv[argc-1] == "2")
 			{
 				result = FileCryptDecrypt(sFileName, 2);
 			}
@@ -114,7 +114,7 @@ int FileCryptDecrypt(string filename , int lockdown)
 		memcpy(DataFinal, Data, size);
 		ret = 0;
 	}
-	else if((std::memcmp(Data, "<encode>", 8) == 0 ||lockdown == 0 || lockdown == 2)
+	else if (std::memcmp(Data, "<encode>", 8) == 0 || lockdown == 0 || lockdown == 2)
 	{
 		printf("Trying to Encrypt ... \n");
 

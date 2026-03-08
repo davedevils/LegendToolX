@@ -1,0 +1,42 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.opendb
+*.ipch
+
+# C++ intermediates
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.exp
+*.idb
+*.tlog
+
+# NuGet
+[Pp]ackages/
+
+# Build results
+*.dll
+*.exe
+*.lib
+
+# OS files
+Thumbs.db
+desktop.ini

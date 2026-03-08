@@ -30,18 +30,7 @@ namespace Ini_Mixer
             Console.WriteLine("----------------------------");
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void button3_Click(object sender, EventArgs e)
+        private void GenerateTranslate_Click(object sender, EventArgs e)
         {
             if (t.IsAlive == true)
             {
@@ -73,7 +62,7 @@ namespace Ini_Mixer
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BrowseFolder_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -100,31 +89,6 @@ namespace Ini_Mixer
                 textBox1.Text = nameoutput;
             }
             */
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void security_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 
