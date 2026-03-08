@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -15,9 +16,12 @@ namespace PkgManager.PkgManager
 {
     public partial class PkgManager : Form
     {
+		private const int MaxPackageSize = 10485760;
 		private delegate void SetTextCallback(string text);
 
 		private bool done;
+
+		private Dictionary<string, string> hashMap = new Dictionary<string, string>();
 
 		private bool uirun;
 
@@ -431,6 +435,231 @@ namespace PkgManager.PkgManager
 
 		private void PackAll_Click(object sender, EventArgs e)
 		{
+			done = false;
+			Thread thread = new Thread(packer);
+			thread.IsBackground = true;
+			thread.Start();
+		}
+
+		private class IdxEntry
+		{
+			public int Index;
+			public int Offset;
+			public int IndexOffset;
+			public int CompressedSize;
+			public int FileSize;
+			public string FileName;
+			public string FilePath;
+			public int PackageId;
+			public string CompressedFilePath;
+		}
+
+		private string ComputeHash(string filePath)
+		{
+			using (var md5 = System.Security.Cryptography.MD5.Create())
+			using (var stream = File.OpenRead(filePath))
+			{
+				var hash = md5.ComputeHash(stream);
+				return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+			}
+		}
+
+		private void LoadMD5Map()
+		{
+			hashMap.Clear();
+			if (!File.Exists("pkg.md5")) return;
+			foreach (var line in File.ReadAllLines("pkg.md5"))
+			{
+				int sep = line.LastIndexOf('|');
+				if (sep > 0)
+					hashMap[line.Substring(0, sep)] = line.Substring(sep + 1);
+			}
+		}
+
+		private void SaveMD5Map()
+		{
+			using (var w = new StreamWriter("pkg.md5", false, Encoding.UTF8))
+			{
+				foreach (var kvp in hashMap)
+					w.WriteLine(kvp.Key + "|" + kvp.Value);
+			}
+		}
+
+		private void packer()
+		{
+			string sourceDir = "source";
+			string outputDir = "output";
+
+			if (!Directory.Exists(sourceDir)) { Directory.CreateDirectory(sourceDir); return; }
+			if (!Directory.Exists(outputDir)) { Directory.CreateDirectory(outputDir); }
+
+			LoadMD5Map();
+
+			var files = Directory.EnumerateFiles(sourceDir, "*", SearchOption.AllDirectories)
+				.Where(f => !f.EndsWith("_Z_", StringComparison.OrdinalIgnoreCase))
+				.ToList();
+
+			uifcount = files.Count;
+			uinum = 0;
+			done = false;
+
+			int currentPackageSize = 0;
+			int packageId = 1;
+			var idxEntries = new List<IdxEntry>();
+
+			for (int i = 0; i < files.Count; i++)
+			{
+				var fp = files[i];
+				string fileName = Path.GetFileName(fp);
+				string relativePath = fp.Substring(sourceDir.Length + 1);
+				string fileDir = Path.GetDirectoryName(relativePath);
+				if (!string.IsNullOrEmpty(fileDir)) fileDir += "\\";
+				else fileDir = "";
+				string fileKey = fileDir + fileName;
+
+				bool needCompress = false;
+				string compressedPath = fp + "_Z_";
+
+				if (hashMap.ContainsKey(fileKey))
+				{
+					string newHash = ComputeHash(fp);
+					if (hashMap[fileKey] != newHash)
+					{
+						hashMap[fileKey] = newHash;
+						needCompress = true;
+					}
+				}
+				else
+				{
+					hashMap[fileKey] = ComputeHash(fp);
+					needCompress = true;
+				}
+
+				if (needCompress || !File.Exists(compressedPath))
+					File.WriteAllBytes(compressedPath, ZlibStream.CompressBuffer(File.ReadAllBytes(fp)));
+
+				int compressedSize = (int)(new FileInfo(compressedPath).Length);
+				int fileSize = (int)(new FileInfo(fp).Length);
+
+				if (currentPackageSize >= MaxPackageSize)
+				{
+					currentPackageSize = 0;
+					packageId++;
+				}
+				currentPackageSize += compressedSize;
+
+				idxEntries.Add(new IdxEntry
+				{
+					Index = i,
+					Offset = 0,
+					CompressedSize = compressedSize,
+					FileSize = fileSize,
+					FileName = fileName.ToLower(),
+					FilePath = fileDir.ToLower(),
+					PackageId = packageId,
+					CompressedFilePath = compressedPath
+				});
+
+				uipath = fileDir;
+				uiname = fileName;
+				uinum = i + 1;
+			}
+
+			WriteIdxFile(Path.Combine(outputDir, "pkg.idx"), idxEntries);
+			WritePkgFiles(outputDir, idxEntries);
+			WriteSpFile(outputDir);
+			SaveMD5Map();
+			done = true;
+		}
+
+		private void WriteIdxFile(string idxPath, List<IdxEntry> entries)
+		{
+			using (var fs = new FileStream(idxPath, FileMode.Create, FileAccess.ReadWrite))
+			{
+				fs.Write(new byte[292], 0, 292);
+
+				for (int i = 0; i < entries.Count; i++)
+				{
+					var e = entries[i];
+					e.IndexOffset = (int)fs.Position;
+
+					fs.Write(BitConverter.GetBytes(e.Index), 0, 4);
+					fs.Write(BitConverter.GetBytes(e.Offset), 0, 4);
+					fs.Write(BitConverter.GetBytes(e.IndexOffset), 0, 4);
+					fs.Write(BitConverter.GetBytes(e.CompressedSize), 0, 4);
+					fs.Write(new byte[8], 0, 8);
+					fs.Write(new byte[8], 0, 8);
+					fs.Write(new byte[8], 0, 8);
+					fs.Write(new byte[8], 0, 8);
+					fs.Write(new byte[4], 0, 4);
+					fs.Write(BitConverter.GetBytes((uint)1), 0, 4);
+					fs.Write(BitConverter.GetBytes(e.FileSize), 0, 4);
+
+					byte[] fnBytes = Encoding.UTF8.GetBytes(e.FileName);
+					fs.Write(fnBytes, 0, fnBytes.Length);
+					fs.Write(new byte[260 - fnBytes.Length], 0, 260 - fnBytes.Length);
+
+					byte[] fpBytes = Encoding.UTF8.GetBytes(e.FilePath);
+					fs.Write(fpBytes, 0, fpBytes.Length);
+					fs.Write(new byte[260 - fpBytes.Length], 0, 260 - fpBytes.Length);
+
+					fs.Write(new byte[4], 0, 4);
+					fs.Write(BitConverter.GetBytes(e.PackageId), 0, 4);
+					fs.Write(new byte[4], 0, 4);
+				}
+			}
+		}
+
+		private void WritePkgFiles(string outputDir, List<IdxEntry> entries)
+		{
+			string idxPath = Path.Combine(outputDir, "pkg.idx");
+			var grouped = entries.GroupBy(e => e.PackageId).OrderBy(g => g.Key);
+
+			using (var idxFs = new FileStream(idxPath, FileMode.Open, FileAccess.ReadWrite))
+			{
+				foreach (var group in grouped)
+				{
+					string pkgPath = Path.Combine(outputDir, GetPackageFileName(group.Key));
+					using (var pkgFs = new FileStream(pkgPath, FileMode.Create, FileAccess.Write))
+					{
+						foreach (var entry in group)
+						{
+							byte[] data = File.ReadAllBytes(entry.CompressedFilePath);
+							int realOffset = (int)pkgFs.Position;
+							pkgFs.Write(data, 0, data.Length);
+
+							idxFs.Seek(entry.IndexOffset + 4, SeekOrigin.Begin);
+							idxFs.Write(BitConverter.GetBytes(realOffset), 0, 4);
+							entry.Offset = realOffset;
+						}
+					}
+				}
+			}
+		}
+
+		private string GetPackageFileName(int packageId)
+		{
+			if (packageId < 10) return "pkg00" + packageId + ".pkg";
+			if (packageId < 100) return "pkg0" + packageId + ".pkg";
+			return "pkg" + packageId + ".pkg";
+		}
+
+		private void WriteSpFile(string outputDir)
+		{
+			string spPath = Path.Combine(outputDir, "pkg.sp");
+			string[] pkgFiles = Directory.GetFiles(outputDir, "pkg???.pkg");
+
+			using (var fs = new FileStream(spPath, FileMode.Create, FileAccess.Write))
+			{
+				for (int i = 0; i < pkgFiles.Length; i++)
+				{
+					int id = i + 1;
+					int size = (int)(new FileInfo(pkgFiles[i]).Length);
+					fs.Write(BitConverter.GetBytes(id), 0, 4);
+					fs.Write(BitConverter.GetBytes(size), 0, 4);
+					fs.Write(new byte[4], 0, 4);
+				}
+			}
 		}
 }
 }
